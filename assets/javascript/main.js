@@ -16,27 +16,28 @@ Sulla base di queste informazioni dovrà calcolare il prezzo totale del viaggio,
 const priceKm = 0.21;
 const youngDiscount = 20;
 const adultDiscount = 40;
-const minAge = 18;
-const maxAge = 65;
-const userKm = Number(prompt('Hey!, Quanti chilometri vuoi percorrere?'))
-const userAge = prompt('Inserisci la tua età')
+const maxAge = 18;
+const minAge = 65;
 const ticketEl = document.getElementById('ticket')
+const userKm = prompt('Hey!, Quanti chilometri vuoi percorrere?')
+const userAge = prompt('Inserisci la tua età')
+
 
 /* Code */
-const costTotalKm = userKm * priceKm
-if (userAge < minAge) {
-    let ticketCost = costTotalKm - (costTotalKm * youngDiscount) / 100
+const costTotalKm = userKm * priceKm;
+let ticketCost
+if (userAge < maxAge) {
+    ticketCost = costTotalKm - (costTotalKm * youngDiscount) / 100
     console.log(ticketCost.toFixed(2))
-    ticketEl.innerHTML = `Il costo del tuo biglietto è di: ${ticketCost} €`
-} else if (userAge >= maxAge) {
+} else if (userAge >= minAge) {
     ticketCost = costTotalKm - (costTotalKm * adultDiscount) / 100
     console.log(ticketCost.toFixed(2))
-    ticketEl.innerHTML = `Il costo del tuo biglietto è di: ${ticketCost} €`
 } else {
     ticketCost = costTotalKm
     console.log(ticketCost.toFixed(2))
-    ticketEl.innerHTML = `Il costo del tuo biglietto è di: ${ticketCost} €`
 }
+
+ticketEl.innerHTML = `Il costo del tuo biglietto è di: ${ticketCost.toFixed(2)} €`
 
 
 
