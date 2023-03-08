@@ -20,19 +20,24 @@ const minAge = 18;
 const maxAge = 65;
 const userKm = Number(prompt('Hey!, Quanti chilometri vuoi percorrere?'))
 const userAge = prompt('Inserisci la tua età')
+const ticketEl = document.getElementById('ticket')
 
 /* Code */
 const costTotalKm = userKm * priceKm
 if (userAge < minAge) {
     let ticketCost = costTotalKm - (costTotalKm * youngDiscount) / 100
     console.log(ticketCost.toFixed(2))
+    ticketEl.innerHTML = `Il costo del tuo biglietto è di: ${ticketCost} €`
 } else if (userAge >= maxAge) {
     ticketCost = costTotalKm - (costTotalKm * adultDiscount) / 100
     console.log(ticketCost.toFixed(2))
+    ticketEl.innerHTML = `Il costo del tuo biglietto è di: ${ticketCost} €`
 } else {
     ticketCost = costTotalKm
     console.log(ticketCost.toFixed(2))
+    ticketEl.innerHTML = `Il costo del tuo biglietto è di: ${ticketCost} €`
 }
+
 
 
 
